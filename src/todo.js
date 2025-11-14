@@ -1,6 +1,5 @@
-import { EvalDevToolModulePlugin, ids } from "webpack"
 
-function addTodo (title,descriptions,date,note,isDone = false,id){
+function addTodo (title,descriptions,date,note,isDone = false){
     return{
         id:crypto.randomUUID(),
         title,
