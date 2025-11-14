@@ -21,3 +21,10 @@ function createNewProject (title){
     return project;
 }
 
+function addTodoToActiveProject({title,descriptions,date,isDone=false}){
+    if(!currentProject){
+        console.error("There is no Project !");
+        return;
+    }
+}
+
