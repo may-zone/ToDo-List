@@ -1,3 +1,5 @@
 import './styles.css';
 
-console.log('Webpack is Ready !😎');
+let projects = [];
+let todos = [];
+
