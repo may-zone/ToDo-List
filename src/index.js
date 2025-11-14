@@ -2,6 +2,7 @@ import './styles.css';
 import { todoController } from './todo-CRUD.js';
 import { projCreator } from './projects.js';
 import { initDOM } from './dom.js';
+import { saveState, loadState } from './storage.js';
 import userIcon from './images/avatar.svg'
 import settings from './images/settings.svg'
 import logout from './images/logout.svg'
@@ -21,6 +22,7 @@ function createNewProject(title) {
   const project = projCreator(title);
   projects.push(project);
   currentProject = project;
+  persistState();
   return project;
 }
 
@@ -30,6 +32,7 @@ function addTodoToActiveProject({ title, descriptions, date, note, priority = 'n
   }
   const todo = todoController.create({ title, descriptions, date, note, priority, isDone });
   currentProject.addTodo(todo);
+  persistState();
   return todo;
 }
 
@@ -52,11 +55,13 @@ function setActiveProject(projectId) {
     return;
   }
   currentProject = project;
+  persistState();
 }
 
 function deleteTodoFromActiveProject(todoId) {
   if (!currentProject) return;
   currentProject.removeTodo(todoId);
+  persistState();
 }
 
 function toggleTodoDone(todoId) {
@@ -64,19 +69,57 @@ function toggleTodoDone(todoId) {
   const todo = todos.find((t) => t.id === todoId);
   if (todo && typeof todo.toggleDone === 'function') {
     todo.toggleDone();
+    persistState();
+  }
+}
+
+function persistState() {
+  saveState(projects, currentProject ? currentProject.id : null);
+}
+
+function hydrateFromStorage() {
+  const saved = loadState();
+  if (!saved) return false;
+  try {
+    projects = saved.projects.map((projectData) => {
+      const projectInstance = projCreator(projectData.title, { id: projectData.id });
+      (projectData.todos || []).forEach((todoData) => {
+        const todo = todoController.create({
+          title: todoData.title,
+          descriptions: todoData.descriptions,
+          date: todoData.date,
+          note: todoData.note,
+          priority: todoData.priority,
+          isDone: todoData.isDone,
+          id: todoData.id,
+        });
+        projectInstance.addTodo(todo);
+      });
+      return projectInstance;
+    });
+    currentProject = projects.find((proj) => proj.id === saved.currentProjectId) || projects[0] || null;
+    return projects.length > 0;
+  } catch (error) {
+    console.error('Failed to hydrate projects', error);
+    projects = [];
+    currentProject = null;
+    return false;
   }
 }
 
 function init() {
-  createDefaultProject();
-
-  addTodoToActiveProject({
-    title: 'Go Fuck YourSelf',
-    descriptions: 'because im angry right now !',
-    date: 'every day',
-    note: 'just kidding',
-    priority: 'high',
-  });
+  const restored = hydrateFromStorage();
+  if (!restored) {
+    createDefaultProject();
+    addTodoToActiveProject({
+      title: 'Go Fuck YourSelf',
+      descriptions: 'because im angry right now !',
+      date: 'every day',
+      note: 'just kidding',
+      priority: 'high',
+    });
+    persistState();
+  }
 
   initDOM({
     getProjects: getAllProjects,

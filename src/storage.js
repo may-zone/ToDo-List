@@ -1,26 +1,53 @@
-import {addTodo} from "./todo-factory.js";
-import {projCreator} from "./projects.js";
+const STORAGE_KEY = 'todo-app-state';
 
-export function save(state) {
-  localStorage.setItem("todo-app", JSON.stringify(state));
+function canUseLocalStorage() {
+  try {
+    return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+  } catch {
+    return false;
+  }
 }
 
-export function load() {
-  const json = localStorage.getItem("todo-app");
-  if (!json) return null;
+export function saveState(projects, currentProjectId) {
+  if (!canUseLocalStorage()) return;
+  const serializedProjects = projects.map((project) => ({
+    id: project.id,
+    title: project.title,
+    todos: project.getTodos().map((todo) => ({
+      id: todo.id,
+      title: todo.title,
+      descriptions: todo.descriptions || '',
+      date: todo.date || '',
+      note: todo.note || '',
+      priority: todo.priority || 'normal',
+      isDone: !!todo.isDone,
+    })),
+  }));
+
+  const payload = {
+    projects: serializedProjects,
+    currentProjectId: currentProjectId || null,
+  };
 
   try {
-    const parsed = JSON.parse(json);
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+  } catch (err) {
+    console.error('Failed to save state', err);
+  }
+}
 
-    parsed.projects = parsed.projects.map(p => ({
-      ...p,
-      todos: p.todos.map(t => createTodo(t.title, t.description, t.dueDate, t.priority, t.completed))
-    }));
-
+export function loadState() {
+  if (!canUseLocalStorage()) return null;
+  const raw = window.localStorage.getItem(STORAGE_KEY);
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || !Array.isArray(parsed.projects)) {
+      return null;
+    }
     return parsed;
-
-  } catch (e) {
-    console.error("Error parsing saved data:", e);
+  } catch (err) {
+    console.error('Failed to parse saved state', err);
     return null;
   }
 }

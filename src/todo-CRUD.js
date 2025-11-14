@@ -12,8 +12,8 @@ const todos = [];
 export const todoController = {
     //C => Create :
 
-    create({ title, descriptions, date, note, priority = 'normal', isDone = false }) {
-        const todo = addTodo({ title, descriptions, date, note, priority, isDone });
+    create({ title, descriptions, date, note, priority = 'normal', isDone = false, id }) {
+        const todo = addTodo({ title, descriptions, date, note, priority, isDone, id });
         todos.push(todo);
         return todo;
     },

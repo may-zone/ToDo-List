@@ -1,6 +1,6 @@
-export function addTodo({ title, descriptions, date, note, priority = 'normal', isDone = false }) {
+export function addTodo({ title, descriptions, date, note, priority = 'normal', isDone = false, id = crypto.randomUUID() }) {
     return {
-        id: crypto.randomUUID(),
+        id,
         title,
         descriptions,
         date,

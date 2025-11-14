@@ -1,26 +1,37 @@
+export function projCreator(title, { id = crypto.randomUUID(), todos: initialTodos = [] } = {}) {
+    let projectTitle = title;
+    const projectId = id;
+    const todos = [...initialTodos];
 
-
-export function projCreator(title){
-    const id = crypto.randomUUID();
-    const todos =[];
-
-    function addTodo(todo){
+    function addTodo(todo) {
         todos.push(todo);
     }
 
-    function removeTodo (todoId){
-        const index = todos.findIndex(t => t.id === todoId);
-        if(index !== -1) todos.splice(index,1);
+    function removeTodo(todoId) {
+        const index = todos.findIndex((t) => t.id === todoId);
+        if (index !== -1) todos.splice(index, 1);
     }
 
-    function getTodos (){
-        return [...todos]
+    function getTodos() {
+        return [...todos];
     }
 
-    function editTitle (newTitle){
-        if(newTitle.title) title = newTitle.title;
+    function editTitle(newTitle) {
+        if (typeof newTitle === 'string' && newTitle.trim()) {
+            projectTitle = newTitle.trim();
+        }
     }
 
-    return { id, title, addTodo, removeTodo, getTodos, editTitle};
-
+    return {
+        get id() {
+            return projectId;
+        },
+        get title() {
+            return projectTitle;
+        },
+        addTodo,
+        removeTodo,
+        getTodos,
+        editTitle,
+    };
 }
