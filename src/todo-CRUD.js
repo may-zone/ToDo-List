@@ -41,5 +41,11 @@ const todoController = {
         todo.toggleDone();
     },
 
+    //D => Delete :
+    remove(id){
+        const index = todos.findIndex(t => t.id === id);
+        if (index === -1) return
+        todos.splice(index ,1);
+    }
 
 }
