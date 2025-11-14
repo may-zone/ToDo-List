@@ -2,6 +2,7 @@ import './styles.css';
 import { todoController } from './todo-CRUD.js';
 import { projCreator } from './projects.js';
 import { initDOM } from './dom.js';
+import userIcon from './images/avatar.svg'
 
 let projects = [];
 let currentProject = null;
@@ -107,3 +108,10 @@ window.app = {
   addTodoToActiveProject,
   todoController,
 };
+
+const userBtn = document.querySelector('.user-btn');
+const img = document.createElement('img');
+img.src = userIcon;
+img.alt = "User icon";
+
+userBtn.appendChild(img);
