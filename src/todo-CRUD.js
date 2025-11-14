@@ -9,7 +9,7 @@ import {createTodo } from './todo-factory.js'
 
 const todos = [];
 
-const todoController = {
+export const todoController = {
     //C => Create :
 
     create({title, descriptions, date, note, isDone=false}){
