@@ -186,27 +186,23 @@ body {
   font-weight: 600;
 }
 
-[data-new-project-form] {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
-}
-
-[data-new-project-form] input {
-  border-radius: 0.4rem;
-  border: 1px solid rgba(0, 0, 0, 0.25);
-  padding: 0.3rem 0.4rem;
-  font: inherit;
-  width: 100%;
-}
-
-[data-new-project-form] button {
-  border-radius: 0.4rem;
-  border: none;
-  padding: 0.4rem 0.6rem;
+.add-project-btn {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  padding: 0.65rem 0.75rem;
   cursor: pointer;
   width: 100%;
+  background: linear-gradient(135deg, #0f172a, #1d4ed8);
+  color: #f8fafc;
+  font-weight: 600;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.add-project-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.25);
 }
 
 .sidebar-actions {

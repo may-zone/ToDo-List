@@ -32,15 +32,9 @@
 
       <ul data-project-list></ul>
 
-      <form data-new-project-form>
-        <input
-          type="text"
-          name="projectTitle"
-          placeholder="New project title"
-          required
-        />
-        <button type="submit">Add Project</button>
-      </form>
+      <button type="button" class="add-project-btn" data-add-project-button>
+        Add Project
+      </button>
 
       <div class="sidebar-actions">
         <button type="button" class="sidebar-action">Settings</button>
@@ -62,6 +56,22 @@
   </footer>
 
   <div class="modal-backdrop hidden" data-modal-backdrop></div>
+
+  <div class="modal hidden" data-project-modal>
+    <form class="modal-content" data-new-project-form>
+      <h2>New Project</h2>
+
+      <label>
+        Title
+        <input type="text" name="projectTitle" required />
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" data-close-project-modal>Cancel</button>
+        <button type="submit">Save</button>
+      </div>
+    </form>
+  </div>
 
   <div class="modal hidden" data-todo-modal>
     <form class="modal-content" data-new-todo-form>

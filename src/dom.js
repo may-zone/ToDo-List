@@ -1,7 +1,10 @@
 let projectListEl;
 let todoListEl;
 let projectTitleEl;
+let addProjectButton;
 let newProjectForm;
+let projectModalEl;
+let closeProjectBtnEl;
 let newTodoForm;
 let modalBackdropEl;
 let todoModalEl;
@@ -25,7 +28,10 @@ function cacheDOM() {
   projectListEl = document.querySelector('[data-project-list]');
   todoListEl = document.querySelector('[data-todo-list]');
   projectTitleEl = document.querySelector('[data-project-title]');
+  addProjectButton = document.querySelector('[data-add-project-button]');
   newProjectForm = document.querySelector('[data-new-project-form]');
+  projectModalEl = document.querySelector('[data-project-modal]');
+  closeProjectBtnEl = document.querySelector('[data-close-project-modal]');
   newTodoForm = document.querySelector('[data-new-todo-form]');
   modalBackdropEl = document.querySelector('[data-modal-backdrop]');
   todoModalEl = document.querySelector('[data-todo-modal]');
@@ -206,14 +212,48 @@ export function render() {
   renderTodos();
 }
 
-function openModal() {
-  if (todoModalEl) todoModalEl.classList.remove('hidden');
-  if (modalBackdropEl) modalBackdropEl.classList.remove('hidden');
+function updateBackdropVisibility() {
+  if (!modalBackdropEl) return;
+  const isTodoHidden = !todoModalEl || todoModalEl.classList.contains('hidden');
+  const isProjectHidden = !projectModalEl || projectModalEl.classList.contains('hidden');
+  if (isTodoHidden && isProjectHidden) {
+    modalBackdropEl.classList.add('hidden');
+  } else {
+    modalBackdropEl.classList.remove('hidden');
+  }
 }
 
-function closeModal() {
-  if (todoModalEl) todoModalEl.classList.add('hidden');
-  if (modalBackdropEl) modalBackdropEl.classList.add('hidden');
+function openTodoModal() {
+  if (todoModalEl) {
+    todoModalEl.classList.remove('hidden');
+    updateBackdropVisibility();
+  }
+}
+
+function closeTodoModal() {
+  if (todoModalEl) {
+    todoModalEl.classList.add('hidden');
+    updateBackdropVisibility();
+  }
+}
+
+function openProjectModal() {
+  if (projectModalEl) {
+    projectModalEl.classList.remove('hidden');
+    updateBackdropVisibility();
+  }
+}
+
+function closeProjectModal() {
+  if (projectModalEl) {
+    projectModalEl.classList.add('hidden');
+    updateBackdropVisibility();
+  }
+}
+
+function closeAllModals() {
+  closeTodoModal();
+  closeProjectModal();
 }
 
 function toggleSidebar() {
@@ -229,16 +269,25 @@ export function initDOM(userCallbacks) {
     ...userCallbacks,
   };
 
+  if (addProjectButton) {
+    addProjectButton.addEventListener('click', openProjectModal);
+  }
+
   if (newProjectForm) {
     newProjectForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const input = newProjectForm.querySelector('input[name="projectTitle"]');
-      const title = input.value.trim();
+      const formData = new FormData(newProjectForm);
+      const title = (formData.get('projectTitle') || '').trim();
       if (!title) return;
       callbacks.onAddProject(title);
-      input.value = '';
+      newProjectForm.reset();
+      closeProjectModal();
       render();
     });
+  }
+
+  if (closeProjectBtnEl) {
+    closeProjectBtnEl.addEventListener('click', closeProjectModal);
   }
 
   if (newTodoForm) {
@@ -257,18 +306,18 @@ export function initDOM(userCallbacks) {
       callbacks.onAddTodo(todoData);
       newTodoForm.reset();
       renderTodos();
-      closeModal();
+      closeTodoModal();
     });
   }
 
   if (openTodoBtnEl) {
-    openTodoBtnEl.addEventListener('click', openModal);
+    openTodoBtnEl.addEventListener('click', openTodoModal);
   }
   if (closeTodoBtnEl) {
-    closeTodoBtnEl.addEventListener('click', closeModal);
+    closeTodoBtnEl.addEventListener('click', closeTodoModal);
   }
   if (modalBackdropEl) {
-    modalBackdropEl.addEventListener('click', closeModal);
+    modalBackdropEl.addEventListener('click', closeAllModals);
   }
   if (projectToggleBtnEl) {
     projectToggleBtnEl.addEventListener('click', toggleSidebar);
