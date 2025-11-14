@@ -37,6 +37,24 @@ function getActiveProjectTodos (){
     return currentProject.getToDos();
 }
 
-function getAllPojects(){
+function getAllProjects(){
     return[...projects];
 }
+
+
+function init (){
+    createDefaultProject();
+
+    addTodoToActiveProject({
+        title : " Go Fuck YourSelf",
+        descriptions :"because im angry right now !",
+        date :"every day",
+        note :"just kidding"
+    });
+    console.log('All Projects :',projects);
+    console.log('Todos :',getActiveProjectTodos());
+
+}
+
+init();
+
