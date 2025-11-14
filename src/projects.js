@@ -12,5 +12,9 @@ function projCreator(title){
         const index = todos.findIndex(t => t.id === todoId);
         if(index !== -1) todos.splice(index,1);
     }
-    
+
+    function getTodos (){
+        return todos
+    }
+
 }
