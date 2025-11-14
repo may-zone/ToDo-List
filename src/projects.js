@@ -21,4 +21,6 @@ function projCreator(title){
         if(newTitle.title) title = newTitle.title;
     }
 
+    return { id, title, addTodo, removeTodo, getTodos, editTitle};
+
 }
