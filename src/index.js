@@ -3,6 +3,10 @@ import { todoController } from './todo-CRUD.js';
 import { projCreator } from './projects.js';
 import { initDOM } from './dom.js';
 import userIcon from './images/avatar.svg'
+import settings from './images/settings.svg'
+import logout from './images/logout.svg'
+import project from './images/project.svg'
+
 
 let projects = [];
 let currentProject = null;
