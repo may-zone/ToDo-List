@@ -28,7 +28,7 @@
 
   <div class="layout">
     <aside class="sidebar" data-project-sidebar>
-      <h2>Projects</h2>
+      <h2 class="sidebar-title" data-sidebar-title>Projects</h2>
 
       <ul data-project-list></ul>
 
@@ -37,8 +37,12 @@
       </button>
 
       <div class="sidebar-actions">
-        <button type="button" class="sidebar-action">Settings</button>
-        <button type="button" class="sidebar-action">Logout</button>
+        <button type="button" class="sidebar-action" data-sidebar-settings>
+          Settings
+        </button>
+        <button type="button" class="sidebar-action" data-sidebar-logout>
+          Logout
+        </button>
       </div>
     </aside>
 

@@ -119,3 +119,23 @@ img.src = userIcon;
 img.alt = "User icon";
 
 userBtn.appendChild(img);
+
+function appendIconToElement(selector, iconSrc, altText, iconClass = 'sidebar-action-icon') {
+  const element = document.querySelector(selector);
+  if (!element) return;
+  const icon = document.createElement('img');
+  icon.src = iconSrc;
+  icon.alt = altText;
+  icon.classList.add(iconClass);
+
+  const label = document.createElement('span');
+  label.textContent = element.textContent.trim();
+
+  element.textContent = '';
+  element.appendChild(icon);
+  element.appendChild(label);
+}
+
+appendIconToElement('[data-sidebar-title]', project, 'Projects icon', 'sidebar-title-icon');
+appendIconToElement('[data-sidebar-settings]', settings, 'Settings icon');
+appendIconToElement('[data-sidebar-logout]', logout, 'Logout icon');

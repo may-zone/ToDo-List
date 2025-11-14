@@ -153,6 +153,12 @@ body {
   font-size: 2rem;
 }
 
+.sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
 [data-project-list] {
   list-style: none;
   padding: 0;
@@ -189,15 +195,18 @@ body {
 .add-project-btn {
   border-radius: 0.75rem;
   border: 1px solid rgba(15, 23, 42, 0.2);
-  padding: 0.65rem 0.75rem;
+  padding: 0.65rem 0.9rem;
   cursor: pointer;
   width: 100%;
   background: linear-gradient(135deg, #0f172a, #1d4ed8);
   color: #f8fafc;
   font-weight: 600;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .add-project-btn:hover {
@@ -217,16 +226,29 @@ body {
 .sidebar-action {
   border: none;
   border-radius: 0.5rem;
-  padding: 0.45rem 0.6rem;
+  padding: 0.45rem 0.7rem;
   cursor: pointer;
   font: inherit;
   background: rgba(15, 23, 42, 0.2);
   color: inherit;
   text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .sidebar-action:hover {
   background: rgba(15, 23, 42, 0.35);
+}
+
+.sidebar-action-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-title-icon {
+  width: 28px;
+  height: 28px;
 }
 
 .main {
