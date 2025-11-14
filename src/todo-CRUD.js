@@ -23,6 +23,23 @@ const todoController = {
     getAll(){
         return [...todos];
     },
-    
+      getById(id) {
+    return todos.find(t => t.id === id) || null;
+    },
+
+    //U => Update :
+
+    update(id,updates){
+        const todo = todos.find(t => t.id=== id);
+        if(!todo) return;
+        todo.edit(update);
+    },
+
+    toggleDone(id){
+        const todo = todos.find(t =>t.id ===id);
+        if(!todo)return
+        todo.toggleDone();
+    },
+
 
 }
