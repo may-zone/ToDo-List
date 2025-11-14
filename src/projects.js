@@ -14,7 +14,7 @@ function projCreator(title){
     }
 
     function getTodos (){
-        return todos
+        return [...todos]
     }
 
 }
