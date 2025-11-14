@@ -1,3 +1,5 @@
+import { ids } from "webpack"
+
 function addTodo (title,descriptions,date,note,isDone = false,id){
     return{
         id:crypto.randomUUID(),
@@ -5,7 +7,11 @@ function addTodo (title,descriptions,date,note,isDone = false,id){
         descriptions,
         date,
         note,
-        isDone
+        isDone,
+
+        toggleDone(){
+            this.isDone =  !isDone;
+        }
     }
 
 }
