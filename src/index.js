@@ -1,19 +1,19 @@
 import './styles.css';
 import { todoController } from './todo-CRUD.js';
-import { projectCreator } from './projects.js';
+import { projCreator } from './projects.js';
 import { initDOM } from './dom.js';
 
 let projects = [];
 let currentProject = null;
 
 function createDefaultProject() {
-  const defaultProject = projectCreator('Inbox');
+  const defaultProject = projCreator('Inbox');
   projects.push(defaultProject);
   currentProject = defaultProject;
 }
 
 function createNewProject(title) {
-  const project = projectCreator(title);
+  const project = projCreator(title);
   projects.push(project);
   currentProject = project;
   return project;
