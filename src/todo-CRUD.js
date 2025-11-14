@@ -16,6 +16,13 @@ const todoController = {
         const todo = createTodo(title, descriptions, date, note, isDone);
         todos.push(todo);
         return todo;
-    }
+    },
+
+    //R => Read :
+
+    getAll(){
+        return [...todos];
+    },
+    
 
 }
