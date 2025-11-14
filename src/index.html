@@ -1,8 +1,29 @@
 <body>
   <header class="header">
-    <button class="project-toggle" data-project-toggle>☰</button>
-    <h1 class="app-title">To Do</h1>
-    <button class="user-btn"></button>
+    <div class="header-left">
+      <button class="project-toggle" data-project-toggle>☰</button>
+      <h1 class="app-title">To Do</h1>
+    </div>
+
+    <form class="header-search" role="search">
+      <span class="search-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M11 4a7 7 0 015.53 11.36l3.28 3.3-1.42 1.41-3.3-3.27A7 7 0 1111 4zm0 2a5 5 0 100 10 5 5 0 000-10z"
+            fill="currentColor"
+          />
+        </svg>
+      </span>
+      <input type="search" name="appSearch" placeholder="Search tasks..." />
+    </form>
+
+    <div class="header-user">
+      <button class="user-btn" aria-label="User profile"></button>
+      <div class="user-info">
+        <span class="user-name">Mehdi Nekouei</span>
+        <span class="user-email">proud@may.com</span>
+      </div>
+    </div>
   </header>
 
   <div class="layout">
@@ -20,6 +41,11 @@
         />
         <button type="submit">Add Project</button>
       </form>
+
+      <div class="sidebar-actions">
+        <button type="button" class="sidebar-action">Settings</button>
+        <button type="button" class="sidebar-action">Logout</button>
+      </div>
     </aside>
 
     <main class="main">
@@ -32,7 +58,7 @@
   </div>
 
   <footer class="footer">
-    <p>© 2025 To Do App</p>
+    <p>© All this shit made by MAY :( </p>
   </footer>
 
   <div class="modal-backdrop hidden" data-modal-backdrop></div>
