@@ -7,4 +7,17 @@ import { addTodo } from './todo-factory.js';
 
 let projects = [];
 let todos = [];
+let currentProject = null;
+
+function createDefaultProject () {
+    const defaultProject = createProject('Inbox');
+    projects.push(defaultProject);
+    currentProject = defaultProject;
+}
+
+function createNewProject (title){
+    const project = projectCreator(title);
+    projects.push(project);
+    return project;
+}
 
