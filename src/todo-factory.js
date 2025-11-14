@@ -1,5 +1,5 @@
 
-function addTodo (title,descriptions,date,note,isDone = false){
+export function addTodo (title,descriptions,date,note,isDone = false){
     return{
         id:crypto.randomUUID(),
         title,
