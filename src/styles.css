@@ -172,7 +172,13 @@ body {
   margin-bottom: 0.3rem;
 }
 
-[data-project-list] button {
+.project-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.project-select-btn {
   width: 100%;
   padding: 0.4rem 0.6rem;
   border-radius: 0.4rem;
@@ -183,8 +189,22 @@ body {
   cursor: pointer;
 }
 
-[data-project-list] button:hover {
+.project-select-btn:hover {
   background: rgba(0, 0, 0, 0.1);
+}
+
+.project-delete-btn {
+  border: none;
+  background: transparent;
+  color: #f87171;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.2rem 0.3rem;
+  line-height: 1;
+}
+
+.project-delete-btn:hover {
+  color: #ef4444;
 }
 
 .active-project {

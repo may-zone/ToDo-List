@@ -19,6 +19,7 @@ let callbacks = {
   getActiveProjectTodos: () => [],
   onAddProject: (title) => {},
   onChangeProject: (projectId) => {},
+  onDeleteProject: (projectId) => {},
   onAddTodo: (todoData) => {},
   onToggleTodo: (todoId) => {},
   onDeleteTodo: (todoId) => {},
@@ -55,7 +56,9 @@ function renderProjects() {
 
   projects.forEach((project) => {
     const li = document.createElement('li');
+    li.classList.add('project-item');
     const btn = document.createElement('button');
+    btn.classList.add('project-select-btn');
 
     btn.textContent = project.title;
     btn.dataset.id = project.id;
@@ -69,7 +72,19 @@ function renderProjects() {
       render();
     });
 
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.classList.add('project-delete-btn');
+    deleteBtn.setAttribute('aria-label', `Delete project ${project.title}`);
+    deleteBtn.textContent = '×';
+    deleteBtn.addEventListener('click', (event) => {
+      event.stopPropagation();
+      callbacks.onDeleteProject(project.id);
+      render();
+    });
+
     li.appendChild(btn);
+    li.appendChild(deleteBtn);
     projectListEl.appendChild(li);
   });
 }

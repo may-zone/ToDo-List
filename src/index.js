@@ -26,6 +26,16 @@ function createNewProject(title) {
   return project;
 }
 
+function deleteProject(projectId) {
+  const index = projects.findIndex((p) => p.id === projectId);
+  if (index === -1) return;
+  projects.splice(index, 1);
+  if (currentProject && currentProject.id === projectId) {
+    currentProject = projects[0] || null;
+  }
+  persistState();
+}
+
 function addTodoToActiveProject({ title, descriptions, date, note, priority = 'normal', isDone = false }) {
   if (!currentProject) {
     return;
@@ -130,6 +140,9 @@ function init() {
     },
     onChangeProject: (projectId) => {
       setActiveProject(projectId);
+    },
+    onDeleteProject: (projectId) => {
+      deleteProject(projectId);
     },
     onAddTodo: (todoData) => {
       addTodoToActiveProject(todoData);
