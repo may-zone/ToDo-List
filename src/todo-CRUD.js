@@ -5,7 +5,7 @@
 // U : Update 
 // D : Delete
 
-import {createTodo } from './todo-factory.js'
+import {addTodo } from './todo-factory.js'
 
 const todos = [];
 
@@ -32,7 +32,7 @@ export const todoController = {
     update(id,updates){
         const todo = todos.find(t => t.id=== id);
         if(!todo) return;
-        todo.edit(update);
+        todo.edit(updates);
     },
 
     toggleDone(id){

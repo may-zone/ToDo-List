@@ -1,6 +1,6 @@
 
 
-function projCreator(title){
+export function projCreator(title){
     const id = crypto.randomUUID();
     const todos =[];
 
