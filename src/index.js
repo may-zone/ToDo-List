@@ -34,7 +34,7 @@ function addTodoToActiveProject({title,descriptions,date,note,isDone=false}){
 
 function getActiveProjectTodos (){
     if(!currentProject) return [];
-    return currentProject.getToDos();
+    return currentProject.getTodos();
 }
 
 function getAllProjects(){
@@ -55,6 +55,23 @@ function init (){
     console.log('Todos :',getActiveProjectTodos());
 
 }
+function setActiveProject(projectId){
+    const project = projects.find(p => p.id === projectId);
+    if(!project){
+        console.error("Project not found!");
+        return;
+    }
+    currentProject = project;
+}
 
 init();
 
+window.app = {
+  projects,
+  getAllProjects,
+  getActiveProjectTodos,
+  createNewProject,
+  setActiveProject,
+  addTodoToActiveProject,
+  todoController,
+};
