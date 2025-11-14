@@ -19,12 +19,11 @@ function createNewProject(title) {
   return project;
 }
 
-function addTodoToActiveProject({ title, descriptions, date, note, isDone = false }) {
+function addTodoToActiveProject({ title, descriptions, date, note, priority = 'normal', isDone = false }) {
   if (!currentProject) {
-    console.error('There is no Project !');
     return;
   }
-  const todo = todoController.create({ title, descriptions, date, note, isDone });
+  const todo = todoController.create({ title, descriptions, date, note, priority, isDone });
   currentProject.addTodo(todo);
   return todo;
 }
@@ -45,7 +44,6 @@ function getActiveProject() {
 function setActiveProject(projectId) {
   const project = projects.find((p) => p.id === projectId);
   if (!project) {
-    console.error('Project not found!');
     return;
   }
   currentProject = project;
@@ -72,10 +70,8 @@ function init() {
     descriptions: 'because im angry right now !',
     date: 'every day',
     note: 'just kidding',
+    priority: 'high',
   });
-
-  console.log('All Projects :', projects);
-  console.log('Todos :', getActiveProjectTodos());
 
   initDOM({
     getProjects: getAllProjects,

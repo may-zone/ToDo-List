@@ -5,15 +5,15 @@
 // U : Update 
 // D : Delete
 
-import {addTodo } from './todo-factory.js'
+import { addTodo } from './todo-factory.js';
 
 const todos = [];
 
 export const todoController = {
     //C => Create :
 
-    create({title, descriptions, date, note, isDone=false}){
-        const todo = createTodo(title, descriptions, date, note, isDone);
+    create({ title, descriptions, date, note, priority = 'normal', isDone = false }) {
+        const todo = addTodo({ title, descriptions, date, note, priority, isDone });
         todos.push(todo);
         return todo;
     },

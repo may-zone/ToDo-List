@@ -1,55 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Odin | To Do List</title>
-</head>
 <body>
-  <aside>
-    <h2>Projects</h2>
-    <ul data-project-list></ul>
+  <header class="header">
+    <button class="project-toggle" data-project-toggle>☰</button>
+    <h1 class="app-title">To Do</h1>
+    <button class="user-btn"></button>
+  </header>
 
-    <form data-new-project-form>
-      <input
-        type="text"
-        name="projectTitle"
-        placeholder="New project title"
-        required
-      />
-      <button type="submit">Add Project</button>
+  <div class="layout">
+    <aside class="sidebar" data-project-sidebar>
+      <h2>Projects</h2>
+
+      <ul data-project-list></ul>
+
+      <form data-new-project-form>
+        <input
+          type="text"
+          name="projectTitle"
+          placeholder="New project title"
+          required
+        />
+        <button type="submit">Add Project</button>
+      </form>
+    </aside>
+
+    <main class="main">
+      <h2 data-project-title></h2>
+
+      <ul data-todo-list></ul>
+
+      <button class="add-todo-fab" data-open-todo-modal>+</button>
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 To Do App</p>
+  </footer>
+
+  <div class="modal-backdrop hidden" data-modal-backdrop></div>
+
+  <div class="modal hidden" data-todo-modal>
+    <form class="modal-content" data-new-todo-form>
+      <h2>New Todo</h2>
+
+      <label>
+        Title
+        <input type="text" name="title" required />
+      </label>
+
+      <label>
+        Due date
+        <input type="date" name="date" />
+      </label>
+
+      <label>
+        Description
+        <textarea name="descriptions"></textarea>
+      </label>
+
+      <label>
+        Note
+        <input type="text" name="note" />
+      </label>
+
+      <label>
+        Priority
+        <select name="priority">
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+        </select>
+      </label>
+
+      <div class="modal-actions">
+        <button type="button" data-close-todo-modal>Cancel</button>
+        <button type="submit">Save</button>
+      </div>
     </form>
-  </aside>
-
-  <main>
-    <h1 data-project-title></h1>
-
-    <ul data-todo-list></ul>
-
-    <form data-new-todo-form>
-      <input
-        type="text"
-        name="title"
-        placeholder="Todo title"
-        required
-      />
-      <input
-        type="date"
-        name="date"
-      />
-      <textarea
-        name="descriptions"
-        placeholder="Description"
-      ></textarea>
-      <input
-        type="text"
-        name="note"
-        placeholder="Note"
-      />
-      <button type="submit">Add Todo</button>
-    </form>
-  </main>
+  </div>
 
 </body>
-
-</html>

@@ -1,20 +1,19 @@
-
-export function addTodo (title,descriptions,date,note,isDone = false){
-    return{
-        id:crypto.randomUUID(),
+export function addTodo({ title, descriptions, date, note, priority = 'normal', isDone = false }) {
+    return {
+        id: crypto.randomUUID(),
         title,
         descriptions,
         date,
         note,
+        priority,
         isDone,
 
-        toggleDone(){
-            this.isDone =  !isDone;
+        toggleDone() {
+            this.isDone = !this.isDone;
         },
 
-        edit(updateCard){
+        edit(updateCard) {
             Object.assign(this, updateCard);
-        }
+        },
     };
-
 }
