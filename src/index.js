@@ -10,7 +10,7 @@ let todos = [];
 let currentProject = null;
 
 function createDefaultProject () {
-    const defaultProject = createProject('Inbox');
+    const defaultProject = projectCreator('Inbox');
     projects.push(defaultProject);
     currentProject = defaultProject;
 }
@@ -21,10 +21,19 @@ function createNewProject (title){
     return project;
 }
 
-function addTodoToActiveProject({title,descriptions,date,isDone=false}){
+function addTodoToActiveProject({title,descriptions,date,note,isDone=false}){
     if(!currentProject){
         console.error("There is no Project !");
         return;
     }
+    const todo = todoController.create({title, descriptions, date,note,isDone});
+    currentProject.addTodo(todo);
+    
+    return todo;
+}
+
+function getActiveProjectTodos (){
+    if(!currentProject) return [];
+    return currentProject.getToDos();
 }
 
