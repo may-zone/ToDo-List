@@ -6,6 +6,51 @@
     <title>Odin | To Do List</title>
 </head>
 <body>
-    
+  <aside>
+    <h2>Projects</h2>
+    <ul data-project-list></ul>
+
+    <form data-new-project-form>
+      <input
+        type="text"
+        name="projectTitle"
+        placeholder="New project title"
+        required
+      />
+      <button type="submit">Add Project</button>
+    </form>
+  </aside>
+
+  <main>
+    <h1 data-project-title></h1>
+
+    <ul data-todo-list></ul>
+
+    <form data-new-todo-form>
+      <input
+        type="text"
+        name="title"
+        placeholder="Todo title"
+        required
+      />
+      <input
+        type="date"
+        name="date"
+      />
+      <textarea
+        name="descriptions"
+        placeholder="Description"
+      ></textarea>
+      <input
+        type="text"
+        name="note"
+        placeholder="Note"
+      />
+      <button type="submit">Add Todo</button>
+    </form>
+  </main>
+
+  <script type="module" src="./index.js"></script>
 </body>
+
 </html>
