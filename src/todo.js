@@ -1,4 +1,4 @@
-import { ids } from "webpack"
+import { EvalDevToolModulePlugin, ids } from "webpack"
 
 function addTodo (title,descriptions,date,note,isDone = false,id){
     return{
@@ -11,7 +11,11 @@ function addTodo (title,descriptions,date,note,isDone = false,id){
 
         toggleDone(){
             this.isDone =  !isDone;
+        },
+
+        edit(updateCard){
+            Object.assign(this, updateCard);
         }
-    }
+    };
 
 }
