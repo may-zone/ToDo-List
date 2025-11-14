@@ -17,4 +17,8 @@ function projCreator(title){
         return [...todos]
     }
 
+    function editTitle (newTitle){
+        if(newTitle.title) title = newTitle.title;
+    }
+
 }
