@@ -37,3 +37,6 @@ function getActiveProjectTodos (){
     return currentProject.getToDos();
 }
 
+function getAllPojects(){
+    return[...projects];
+}
