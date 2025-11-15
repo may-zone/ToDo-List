@@ -9,7 +9,7 @@ organize tasks efficiently.
 
 ## **📸 Preview**
 
-[./screenShot.png]
+ !Preview](./screenShot.png)
 
 
 ------------------------------------------------------------------------
