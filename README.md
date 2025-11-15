@@ -32,14 +32,14 @@ organize tasks efficiently.
 
 ------------------------------------------------------------------------
 
- 🧩 Architecture
+## **🧩 Architecture**
 
 The project uses a modular ES Modules structure. Each module handles one
 part of the logic:
 
-  -----------------------------------------------------------------------
+  _______________________________________________________________________
   Module                  Responsibility
-  ----------------------- -----------------------------------------------
+  _______________________________________________________________________
   todo-factory.js         Creates todo objects
 
   todo-CRUD.js            CRUD controller for todos
