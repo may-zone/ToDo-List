@@ -31,30 +31,19 @@ organize tasks efficiently.
 -   Default Inbox project on first load
 
 ------------------------------------------------------------------------
-
-## **🧩 Architecture**
+## 🧩 Architecture
 
 The project uses a modular ES Modules structure. Each module handles one
 part of the logic:
 
-  _______________________________________________________________________
-  Module                  Responsibility
-  _______________________________________________________________________
-  todo-factory.js         Creates todo objects
-
-  todo-CRUD.js            CRUD controller for todos
-
-  projects.js             Project creation & todo management inside each
-                          project
-
-  dom.js                  All DOM rendering and UI updates
-
-  index.js                App core logic & initialization
-
-  styles.css              Main styling file
-  _______________________________________________________________________
-
-  _______________________________________________________________________
+| Module            | Responsibility |
+|-------------------|----------------|
+| todo-factory.js   | Creates todo objects |
+| todo-CRUD.js      | CRUD controller for todos |
+| projects.js       | Project creation & todo management inside each project |
+| dom.js            | All DOM rendering and UI updates |
+| index.js          | App core logic & initialization |
+| styles.css        | Main styling file |
 
 ## **📂 Project Structure**
 
