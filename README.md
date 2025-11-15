@@ -32,7 +32,7 @@ organize tasks efficiently.
 
 ------------------------------------------------------------------------
 
- **🧩 Architecture**
+ 🧩 Architecture
 
 The project uses a modular ES Modules structure. Each module handles one
 part of the logic:
