@@ -1,4 +1,4 @@
-##📝 To-Do List App
+## **📝 To-Do List App**
 
 A modular and clean JavaScript To-Do List application built for The Odin
 Project.
@@ -7,14 +7,14 @@ organize tasks efficiently.
 
 ------------------------------------------------------------------------
 
-📸 Preview
+## **📸 Preview**
 
-(./screenShot.png)
+[./screenShot.png]
 
 
 ------------------------------------------------------------------------
 
-##🚀 Features
+## **🚀 Features**
 
 ✅ Core Functionality
 
@@ -32,7 +32,7 @@ organize tasks efficiently.
 
 ------------------------------------------------------------------------
 
-##🧩 Architecture
+## **🧩 Architecture**
 
 The project uses a modular ES Modules structure. Each module handles one
 part of the logic:
@@ -56,7 +56,7 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-##📂 Project Structure
+## **📂 Project Structure**
 
     /src
       ├── index.js
@@ -72,7 +72,7 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-##🛠️ Technologies Used
+## **🛠️ Technologies Used**
 
 -   JavaScript (ES6 Modules)
 -   HTML5 & CSS3
@@ -81,7 +81,7 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-##▶️ How to Run Locally
+##  **▶️ How to Run Locally**
 
 1. Clone the repository
 
@@ -101,7 +101,7 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-##🧪 Future Improvements
+## **🧪 Future Improvements**
 
 -   Add LocalStorage integration
 -   Todo priority levels
@@ -111,6 +111,6 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-##📄 License
+## **📄 License**
 
 This project is licensed under the MIT License.
