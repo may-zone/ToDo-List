@@ -1,4 +1,4 @@
-📝 To-Do List App
+## **📝 To-Do List App**
 
 A modular and clean JavaScript To-Do List application built for The Odin
 Project.
@@ -7,14 +7,14 @@ organize tasks efficiently.
 
 ------------------------------------------------------------------------
 
-📸 Preview
+## **📸 Preview**
 
-[App Screenshot](./screenShot.png)
+ ![Preview](./screenShot.png)
 
 
 ------------------------------------------------------------------------
 
-🚀 Features
+## **🚀 Features**
 
 ✅ Core Functionality
 
@@ -31,32 +31,21 @@ organize tasks efficiently.
 -   Default Inbox project on first load
 
 ------------------------------------------------------------------------
-
-🧩 Architecture
+## 🧩 Architecture
 
 The project uses a modular ES Modules structure. Each module handles one
 part of the logic:
 
-  -----------------------------------------------------------------------
-  Module                  Responsibility
-  ----------------------- -----------------------------------------------
-  todo-factory.js         Creates todo objects
+| Module            | Responsibility |
+|-------------------|----------------|
+| todo-factory.js   | Creates todo objects |
+| todo-CRUD.js      | CRUD controller for todos |
+| projects.js       | Project creation & todo management inside each project |
+| dom.js            | All DOM rendering and UI updates |
+| index.js          | App core logic & initialization |
+| styles.css        | Main styling file |
 
-  todo-CRUD.js            CRUD controller for todos
-
-  projects.js             Project creation & todo management inside each
-                          project
-
-  dom.js                  All DOM rendering and UI updates
-
-  index.js                App core logic & initialization
-
-  styles.css              Main styling file
-  -----------------------------------------------------------------------
-
-------------------------------------------------------------------------
-
-📂 Project Structure
+## **📂 Project Structure**
 
     /src
       ├── index.js
@@ -72,7 +61,7 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-🛠️ Technologies Used
+## **🛠️ Technologies Used**
 
 -   JavaScript (ES6 Modules)
 -   HTML5 & CSS3
@@ -81,12 +70,11 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-▶️ How to Run Locally
+##  **▶️ How to Run Locally**
 
 1. Clone the repository
 
     git clone https://github.com/may-zone/ToDo-List
-    cd <ToDo-List>
 
 2. Install dependencies
 
@@ -102,7 +90,7 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-🧪 Future Improvements
+## **🧪 Future Improvements**
 
 -   Add LocalStorage integration
 -   Todo priority levels
@@ -112,6 +100,6 @@ part of the logic:
 
 ------------------------------------------------------------------------
 
-📄 License
+## **📄 License**
 
 This project is licensed under the APACHE-2.0 License.
